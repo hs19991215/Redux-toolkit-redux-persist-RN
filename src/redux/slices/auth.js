@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit";
 import API_LINK from "../../utils/configs"
-console.log(API_LINK)
 const initialState = {
     isLoading: false,
     error: null,
     userData: null,
-    userDataList: []
+    userDataList: [],
+    data: []
 }
 
 const headers = {
@@ -28,6 +28,10 @@ const Slice = createSlice({
         onLoginSuccess(state, action) {
             state.isLoading = false
             state.userDataList = action.payload
+        },
+        onFetchSuccess(state, action) {
+            state.isLoading = false
+            state.data = action.payload
         }
     }
 })
@@ -55,13 +59,39 @@ export function onLogin(email, password) {
             fetch(`${API_LINK}/login`, requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    if (result?.status == 200) {
+                    if (result) {
                         dispatch(Slice.actions.onLoginSuccess(result))
+                    } else {
+
                     }
                 })
                 .catch(error => console.log('error', error));
         } catch (error) {
             dispatch(Slice.actions.hasError(error))
         }
+    }
+}
+
+export function onGet() {
+    return (dispatch) => {
+        try {
+            fetch("https://dummyjson.com/products/18", {
+                method: "GET",
+                headers: headers,
+            })
+                .then((response) => response.json())
+                .then((result) => {
+                    if (result) {
+
+                        dispatch(Slice.actions.onFetchSuccess([result, result]))
+                    }
+                })
+                .catch((error) => {
+                    dispatch(Slice.actions.hasError(error))
+                });
+        } catch (error) {
+            dispatch(Slice.actions.hasError(error))
+        }
+
     }
 }
