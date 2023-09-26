@@ -75,19 +75,18 @@ export function onLogin(email, password) {
 export function onGet() {
     return (dispatch) => {
         try {
-            fetch("https://dummyjson.com/products/18", {
+            fetch("https://dummyjson.com/products/10", {
                 method: "GET",
                 headers: headers,
             })
                 .then((response) => response.json())
                 .then((result) => {
                     if (result) {
-
                         dispatch(Slice.actions.onFetchSuccess([result, result]))
                     }
                 })
                 .catch((error) => {
-                    dispatch(Slice.actions.hasError(error))
+                    console.log("error", error)
                 });
         } catch (error) {
             dispatch(Slice.actions.hasError(error))

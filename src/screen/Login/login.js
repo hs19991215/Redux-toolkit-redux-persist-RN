@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,7 @@ const LoginScreen = () => {
     console.log("======>", dataGet?.data[0].brand)
     useEffect(() => {
         dispatch(onGet())
+
     }, [])
     const Login = (ev, ve) => {
         dispatch(onLogin(ev, ve))
@@ -17,9 +18,6 @@ const LoginScreen = () => {
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text>{dataGet?.data[0].brand}</Text>
-            <TouchableOpacity >
-                <Text>Harsh</Text>
-            </TouchableOpacity>
         </View>
     )
 }

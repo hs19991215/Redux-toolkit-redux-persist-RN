@@ -12,6 +12,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import counterSlice from "./slices/counter"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import auth from './slices/auth';
+
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
