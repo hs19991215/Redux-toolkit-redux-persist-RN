@@ -6,7 +6,6 @@ import { incree, decree } from '../redux/slices/counter'
 const Home = () => {
     const dispatch = useDispatch()
     const val = useSelector(state => state?.counterSlice)
-    console.log(val)
     const inc = () => {
         dispatch(incree())
     }
