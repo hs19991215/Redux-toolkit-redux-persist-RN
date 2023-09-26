@@ -1,12 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { incree, decree } from '../redux/slices/counter'
 
 const Home = () => {
+    const dispatch = useDispatch()
     const val = useSelector(state => state?.counterSlice)
+    console.log(val)
+    const inc = () => {
+        dispatch(incree())
+    }
+    const dec = () => {
+        dispatch(decree())
+    }
     return (
         <View>
-            <Text>Home</Text>
+            <TouchableOpacity onPress={() => inc()}>
+                <Text>+</Text>
+            </TouchableOpacity>
+            <Text>{val?.value}</Text>
+            <TouchableOpacity onPress={() => dec()}>
+                <Text>-</Text>
+            </TouchableOpacity>
         </View>
     )
 }
