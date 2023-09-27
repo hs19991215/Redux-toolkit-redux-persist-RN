@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screen/Login/login';
 import SignUpScreen from '../screen/Signup/signup';
+import HomeScreen from '../screen/Home/home';
 
 
 function ProfileScreen({ navigation }) {
@@ -33,7 +34,7 @@ function MyStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
         </Stack.Navigator>

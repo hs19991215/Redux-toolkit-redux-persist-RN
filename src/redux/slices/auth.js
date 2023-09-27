@@ -38,15 +38,15 @@ const Slice = createSlice({
 
 export default Slice.reducer;
 
-export function onLogin(email, password) {
+export function onLogin() {
     return (dispatch) => {
         try {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
             var raw = JSON.stringify({
-                "email": email,
-                "password": password
+                "email": "hs@gmail.com",
+                "password": "harsh123"
             });
 
             var requestOptions = {
@@ -56,7 +56,7 @@ export function onLogin(email, password) {
                 redirect: 'follow'
             };
 
-            fetch(`${API_LINK}/login`, requestOptions)
+            fetch(`http://10.0.102.184:3000/login`, requestOptions)
                 .then(response => response.json())
                 .then(result => {
                     if (result) {
