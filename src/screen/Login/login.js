@@ -7,7 +7,6 @@ import { onGet, onLogin } from '../../redux/slices/auth'
 const LoginScreen = () => {
     const dispatch = useDispatch()
     const dataGet = useSelector(state => state?.auth)
-    console.log("======>", dataGet?.userDataList)
     useEffect(() => {
         dispatch(onGet())
 
@@ -17,7 +16,7 @@ const LoginScreen = () => {
     }
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>{dataGet?.data[0].brand}</Text>
+            <Text>{dataGet?.data[0]?.brand}</Text>
             <Button title='Press' onPress={() => Login()} />
         </View>
     )
